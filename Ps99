@@ -12,7 +12,7 @@ while true do
         }
         
         game:GetService("ReplicatedStorage").Network:FindFirstChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(3)
+        wait(1)  -- Wait for 1 second before redeeming the next gift
     end
 end
     print("Clicked")
@@ -55,62 +55,67 @@ end)
 
 local Section = Tab:NewSection("Item Toggles")
 
-local function consumeMiniPinata()
+local functions = {
+    consumeMiniPinata,
+    consumeBreakableSprinkler,
+    consumeMiniLuckyBlock,
+    consumeTNTCrate,
+    spawnComet,
+    spawnCoinJar,
+    consumeTNT
+}
+
+local delay = 2  -- Delay in seconds between each function call
+
 while true do
+    for _, func in ipairs(functions) do
+        func()
+        wait(delay)
+    end
+end
+
+local function consumeMiniPinata()
     local args = {
         [1] = "bd3ce58f6ec94a71919e68ff24f03ec2"
     }
     game:GetService("ReplicatedStorage").Network.MiniPinata_Consume:InvokeServer(unpack(args))
-    wait(3)
 end
 
 local function consumeBreakableSprinkler()
-while true do
     local args = {
         [1] = "Breakable Sprinkler",
         [2] = "febbe0eb6fc44cf2b467a07e69423808"
     }
     game:GetService("ReplicatedStorage").Network:FindFirstChild("Sprinklers: Consume"):InvokeServer(unpack(args))
-    wait(3)
 end
 
 local function consumeMiniLuckyBlock()
-while true do
     local args = {
         [1] = "ebd2e640fe13486f8f4ee2e34f5d897e"
     }
     game:GetService("ReplicatedStorage").Network.MiniLuckyBlock_Consume:InvokeServer(unpack(args))
-    wait(3)
 end
 
 local function consumeTNTCrate()
-while true do
     game:GetService("ReplicatedStorage").Network.TNT_Crate_Consume:InvokeServer()
-    wait(3)
 end
 
 local function spawnComet()
-while true do
     local args = {
         [1] = "28ba4aa51c0649228f61c03a924615f5"
     }
     game:GetService("ReplicatedStorage").Network.Comet_Spawn:InvokeServer(unpack(args))
-    wait(3)
 end
 
 local function spawnCoinJar()
-while true do
     local args = {
         [1] = "5819fd1cce034f07be8e5197256c9edc"
     }
     game:GetService("ReplicatedStorage").Network.CoinJar_Spawn:InvokeServer(unpack(args))
-    wait(3)
 end
 
 local function consumeTNT()
-while true do
     game:GetService("ReplicatedStorage").Network.TNT_Consume:InvokeServer()
-    wait(3)
 end
 
 Section:NewToggle("Auto Use Mini Pinata", "Toggle for Mini Pinata consumption", function(state)
