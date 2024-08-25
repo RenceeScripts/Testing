@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("Durex Hub |•Pet Simulator 99", "DarkTheme")
+local Window = Library.CreateLib("Durex Hub•Pet Simulator 99", "DarkTheme")
 
 local Tab = Window:NewTab("Main")
 local Section = Tab:NewSection("Main Features")
@@ -12,7 +12,7 @@ while true do
         }
         
         game:GetService("ReplicatedStorage").Network:FindFirstChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(3)  -- Wait for 1 second before redeeming the next gift
+        wait(3)
     end
 end
     print("Clicked")
@@ -55,63 +55,69 @@ end)
 
 local Section = Tab:NewSection("Item Toggles")
 
-local functions = {
-    consumeMiniPinata,
-    consumeBreakableSprinkler,
-    consumeMiniLuckyBlock,
-    consumeTNTCrate,
-    spawnComet,
-    spawnCoinJar,
-    consumeTNT
-}
-
-local delay = 5  -- Delay in seconds between each function call
-
-while true do
-    for _, func in ipairs(functions) do
-        func()
-        wait(delay)
+local consumeMiniPinata = function()
+    while true do
+        local args = {
+            [1] = "bd3ce58f6ec94a71919e68ff24f03ec2"
+        }
+        game:GetService("ReplicatedStorage").Network.MiniPinata_Consume:InvokeServer(unpack(args))
+        wait(3)
     end
 end
 
-local function consumeMiniPinata()
-    local args = {
-        [1] = "bd3ce58f6ec94a71919e68ff24f03ec2"
-    }
-    game:GetService("ReplicatedStorage").Network.MiniPinata_Consume:InvokeServer(unpack(args))
+local consumeBreakableSprinkler = function()
+    while true do
+        local args = {
+            [1] = "Breakable Sprinkler",
+            [2] = "febbe0eb6fc44cf2b467a07e69423808"
+        }
+        game:GetService("ReplicatedStorage").Network:FindFirstChild("Sprinklers: Consume"):InvokeServer(unpack(args))
+        wait(3)
+    end
 end
 
-local function consumeBreakableSprinkler()
-    local args = {
-        [1] = "Breakable Sprinkler",
-        [2] = "febbe0eb6fc44cf2b467a07e69423808"
-    }
-    game:GetService("ReplicatedStorage").Network:FindFirstChild("Sprinklers: Consume"):InvokeServer(unpack(args))
+local consumeMiniLuckyBlock = function()
+    while true do
+        local args = {
+            [1] = "ebd2e640fe13486f8f4ee2e34f5d897e"
+        }
+        game:GetService("ReplicatedStorage").Network.MiniLuckyBlock_Consume:InvokeServer(unpack(args))
+        wait(3)
+    end
 end
 
-local function consumeMiniLuckyBlock()
-    local args = {
-        [1] = "ebd2e640fe13486f8f4ee2e34f5d897e"
-    }
-    game:GetService("ReplicatedStorage").Network.MiniLuckyBlock_Consume:InvokeServer(unpack(args))
+local consumeTNTCrate = function()
+    while true do
+        game:GetService("ReplicatedStorage").Network.TNT_Crate_Consume:InvokeServer()
+        wait(3)
+    end
 end
 
-local function consumeTNTCrate()
-    game:GetService("ReplicatedStorage").Network.TNT_Crate_Consume:InvokeServer()
+local spawnComet = function()
+    while true do
+        local args = {
+            [1] = "28ba4aa51c0649228f61c03a924615f5"
+        }
+        game:GetService("ReplicatedStorage").Network.Comet_Spawn:InvokeServer(unpack(args))
+        wait(3)
+    end
 end
 
-local function spawnComet()
-    local args = {
-        [1] = "28ba4aa51c0649228f61c03a924615f5"
-    }
-    game:GetService("ReplicatedStorage").Network.Comet_Spawn:InvokeServer(unpack(args))
+local spawnCoinJar = function()
+    while true do
+        local args = {
+            [1] = "5819fd1cce034f07be8e5197256c9edc"
+        }
+        game:GetService("ReplicatedStorage").Network.CoinJar_Spawn:InvokeServer(unpack(args))
+        wait(3)
+    end
 end
 
-local function spawnCoinJar()
-    local args = {
-        [1] = "5819fd1cce034f07be8e5197256c9edc"
-    }
-    game:GetService("ReplicatedStorage").Network.CoinJar_Spawn:InvokeServer(unpack(args))
+local consumeTNT = function()
+    while true do
+        game:GetService("ReplicatedStorage").Network.TNT_Consume:InvokeServer()
+        wait(3)
+    end
 end
 
 local function consumeTNT()
