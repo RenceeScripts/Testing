@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("Durex Hub•Pet Simulator 99", "DarkTheme")
+local Window = Library.CreateLib("Durex Hub | Pet Simulator 99", "DarkTheme")
 
 local Tab = Window:NewTab("Main")
 local Section = Tab:NewSection("Main Features")
@@ -121,7 +121,9 @@ local consumeTNT = function()
 end
 
 local function consumeTNT()
+  while true do
     game:GetService("ReplicatedStorage").Network.TNT_Consume:InvokeServer()
+    wait(3)
 end
 
 Section:NewToggle("Auto Use Mini Pinata", "Toggle for Mini Pinata consumption", function(state)
@@ -251,3 +253,4 @@ end)
 Section:NewKeybind("Discord.gg/2pud5FTqsz", "KeybindInfo", Enum.KeyCode.E, function()
 	print("You just clicked the bind")
 end)
+ 
