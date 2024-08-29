@@ -53,13 +53,6 @@ Section:NewToggle("Clicking Aura", "Toggles Click Aura", function(state)
     end
 end)
 
-local Section = Tab:NewSection("Item Toggles")
-
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Auto Loot", "DarkTheme")
-local Tab = Window:NewTab("Auto Loot")
-local Section = Tab:NewSection("Auto Use Items")
-
 local function consumeMiniPinata()
     local args = {
         [1] = "bd3ce58f6ec94a71919e68ff24f03ec2"
@@ -114,6 +107,8 @@ Section:NewToggle("Auto Use Mini Pinata", "Toggle for Mini Pinata consumption", 
         end
     end
 end)
+
+local Section = Tab:NewSection("Item Toggles")
 
 Section:NewToggle("Auto Use Breakable Sprinkler", "Toggle for Breakable Sprinkler consumption", function(state)
     if state then
